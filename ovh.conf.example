@@ -1,0 +1,6 @@
+[default]
+endpoint=ovh-eu
+
+[ovh-eu]
+application_key=YOUR-APP-KEY
+application_secret=YOUR-APP-SECRET
