@@ -2,6 +2,84 @@ import ovh
 import webbrowser
 
 
+class Currency(object):
+    def __init__(self, code, symbol):
+        self.code = code
+        self.symbol = symbol
+
+    @classmethod
+    def from_dictionary(cls, dictionary):
+        code = dictionary['code']
+        symbol = dictionary['symbol']
+        return cls(code, symbol)
+
+
+class OVHCustomer(object):
+    def __init__(
+        self,
+        currency,
+        company_id_number,
+        birthday,
+        customer_code,
+        spare_email,
+        vat_number,
+        fax_number,
+        address,
+        sex,
+        email,
+        nic_handle,
+        ovh_subsidiary,
+        legal_form,
+        ovh_company,
+        phone_number,
+        italian_sdi,
+        state,
+        corporation_type,
+        birth_city,
+        country,
+        city,
+        language,
+        name,
+        national_id_number,
+        phone_country,
+        zip_code,
+        first_name,
+        area,
+    ):
+        self.currency = currency
+        self.company_id_number = company_id_number
+        self.birthday = birthday
+        self.customer_code = customer_code
+        self.spare_email = spare_email
+        self.vat_number = vat_number
+        self.fax_number = fax_number
+        self.address = address
+        self.sex = sex
+        self.email = email
+        self.nic_handle = nic_handle
+        self.ovh_subsidiary = ovh_subsidiary
+        self.legal_form = legal_form
+        self.ovh_company = ovh_company
+        self.phone_number = phone_number
+        self.italian_sdi = italian_sdi
+        self.state = state
+        self.corporation_type = corporation_type
+        self.birth_city = birth_city
+        self.country = country
+        self.city = city
+        self.language = language
+        self.name = name
+        self.national_id_number = national_id_number
+        self.phone_country = phone_country
+        self.zip_code = zip_code
+        self.first_name = first_name
+        self.area = area
+
+    @classmethod
+    def from_dictionary(cls, dictionary):
+        pass
+
+
 class OVHAppConnector(object):
     def __init__(self, from_conf_file=True, new_consumer_key=True):
         # TODO: Add config file parser / validator
@@ -22,14 +100,14 @@ class OVHAppConnector(object):
         self.consumer_key_response = self.key_request.request()
 
         # Point browser to validation URL
-        _validation_url = self.consumer_key_response['validationUrl']
+        _validation_url = self.consumer_key_response["validationUrl"]
         webbrowser.open(_validation_url)
 
     def get_client_data(self):
-        client_data = self.client.get('/me')
+        client_data = self.client.get("/me")
         print(client_data)
 
     def get_consumer_key_token(self):
         # TODO: Store Token in .conf file for reuse.
-        self.consumer_key = self.consumer_key_response['consumerKey']
+        self.consumer_key = self.consumer_key_response["consumerKey"]
         print(self.consumer_key)
