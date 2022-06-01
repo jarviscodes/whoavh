@@ -13,6 +13,9 @@ class Currency(object):
         symbol = dictionary["symbol"]
         return cls(code, symbol)
 
+    def __str__(self):
+        return f"[{self.symbol}]({self.code})"
+
 
 class OVHCustomer(object):
     def __init__(
@@ -141,6 +144,9 @@ class OVHCustomer(object):
             first_name=first_name,
             area=area,
         )
+
+    def __str__(self):
+        return f"[{self.first_name}, {self.name}] ({self.company_id_number})"
 
 
 class OVHAppConnector(object):
