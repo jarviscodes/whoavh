@@ -9,8 +9,8 @@ class Currency(object):
 
     @classmethod
     def from_dictionary(cls, dictionary):
-        code = dictionary['code']
-        symbol = dictionary['symbol']
+        code = dictionary["code"]
+        symbol = dictionary["symbol"]
         return cls(code, symbol)
 
 
@@ -77,7 +77,70 @@ class OVHCustomer(object):
 
     @classmethod
     def from_dictionary(cls, dictionary):
-        pass
+        currency_dict = dictionary.get("currency", None)
+        if currency_dict:
+            currency = Currency.from_dictionary(currency_dict)
+        else:
+            currency = currency_dict
+
+        company_id_number = dictionary.get("companyNationalIdentificationNumber", None)
+        birthday = dictionary.get("birthDay", None)
+        customer_code = dictionary.get("customerCode", None)
+        spare_email = dictionary.get("spareEmail", None)
+        vat_number = dictionary.get("vat", None)
+        fax_number = dictionary.get("fax", None)
+        address = dictionary.get("address", None)
+        sex = dictionary.get("sex", None)
+        email = dictionary.get("email", None)
+        nic_handle = dictionary.get("nichandle", None)
+        ovh_subsidiary = dictionary.get("ovhSubsidiary", None)
+        legal_form = dictionary.get("legalform", None)
+        ovh_company = dictionary.get("ovhCompany", None)
+        phone_number = dictionary.get("phone", None)
+        italian_sdi = dictionary.get("italianSDI", None)
+        state = dictionary.get("state", None)
+        corporation_type = dictionary.get("corporationType", None)
+        birth_city = dictionary.get("birthCity", None)
+        country = dictionary.get("country", None)
+        city = dictionary.get("city", None)
+        language = dictionary.get("language", None)
+        name = dictionary.get("name", None)
+        national_id_number = dictionary.get("nationalIdentificationNumber", None)
+        phone_country = dictionary.get("phoneCountry", None)
+        zip_code = dictionary.get("zip", None)
+        first_name = dictionary.get("firstname", None)
+        area = dictionary.get("area", None)
+
+        return cls(
+            currency=currency,
+            company_id_number=company_id_number,
+            birthday=birthday,
+            customer_code=customer_code,
+            spare_email=spare_email,
+            vat_number=vat_number,
+            fax_number=fax_number,
+            address=address,
+            sex=sex,
+            email=email,
+            nic_handle=nic_handle,
+            ovh_subsidiary=ovh_subsidiary,
+            legal_form=legal_form,
+            ovh_company=ovh_company,
+            phone_number=phone_number,
+            italian_sdi=italian_sdi,
+            state=state,
+            corporation_type=corporation_type,
+            birth_city=birth_city,
+            country=country,
+            city=city,
+            language=language,
+            name=name,
+            national_id_number=national_id_number,
+            phone_country=phone_country,
+            zip_code=zip_code,
+            first_name=first_name,
+            area=area,
+        )
 
 
 class OVHAppConnector(object):
