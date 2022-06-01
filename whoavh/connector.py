@@ -146,7 +146,7 @@ class OVHCustomer(object):
         )
 
     def __str__(self):
-        return f"[{self.first_name}, {self.name}] ({self.company_id_number})"
+        return f"[{self.first_name}, {self.name}] (VAT: {self.company_id_number})"
 
 
 class OVHAppConnector(object):
@@ -174,7 +174,8 @@ class OVHAppConnector(object):
 
     def get_client_data(self):
         client_data = self.client.get("/me")
-        print(client_data)
+        client = OVHCustomer.from_dictionary(client_data)
+        print(str(client))
 
     def get_consumer_key_token(self):
         # TODO: Store Token in .conf file for reuse.

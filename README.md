@@ -23,8 +23,8 @@ In [2]: x = OVHAppConnector()
 In [3]: x.get_consumer_key_token()
 deadbeefdeadbeefdeadbeef781a6bda
 
-In [4]: x.get_client_data()
-{'corporationType': ... }
+In [4]: In [3]: x.get_client_data()
+[John, Doe] (VAT: None)
 
 ```
 
